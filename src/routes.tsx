@@ -5,7 +5,7 @@ import App from "./App";
 import { Profile } from "./pages/Profile";
 import { Map } from "./pages/Map";
 
-const AppRoutes: React.FC = () => {
+export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -16,5 +16,3 @@ const AppRoutes: React.FC = () => {
     </Routes>
   );
 };
-
-export default AppRoutes;

@@ -11,7 +11,7 @@ export const Layout: React.FC = () => {
   return (
     <>
       <div className="flex relative">
-        <Sidebar open={open} setOpen={setOpen} size={size} setSize={setSize} />
+        <Sidebar open={open} setOpen={setOpen} setSize={setSize} />
 
         <div
           className="transition-transform duration-300"

@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 interface props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  size: number;
   setSize: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
+export const Sidebar: React.FC<props> = ({ open, setOpen, setSize }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleToggle = () => setOpen(!open);

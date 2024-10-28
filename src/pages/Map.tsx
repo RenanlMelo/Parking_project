@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Map = () => {
   return (
     <>
@@ -17,5 +15,5 @@ export const Map = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};

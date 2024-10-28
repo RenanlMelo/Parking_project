@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from "react";
 
 interface props {
-  open: boolean
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  size: number
-  setSize: React.Dispatch<React.SetStateAction<number>>
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  size: number;
+  setSize: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
-  const [name, setName] = useState<string>('Renan Lara Melo')
-  const [email, setEmail] = useState<string>('renanlarameleo@gmail.com')
-
-  const handleToggle = () => setOpen(!open)
+  const handleToggle = () => setOpen(!open);
 
   useEffect(() => {
-    const sidebar = document.getElementById('sidebar')
+    const sidebar = document.getElementById("sidebar");
     if (sidebar) {
-      const navSize = sidebar?.clientWidth
-      setSize(navSize)
+      const navSize = sidebar?.clientWidth;
+      setSize(navSize);
     }
-  }, [size, setSize])
+  }, [size, setSize]);
+
+  const profileSettings = () => {};
+
+  const signOut = () => {};
 
   return (
     <nav
       id="sidebar"
       className={`bg-[#0a0a0a] z-20 w-[75vw] h-[100vh] flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
-        open ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+        open ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
       <div className="flex justify-between p-6 items-center">
         <div className="grid col-span-2 gap-x-2">
           <svg
@@ -34,7 +36,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
             width="32"
             height="32"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M7.19 19h2.95c.18 0 .33-.15.33-.33A2.67 2.67 0 0 0 7.8 16h-.62c-.66 0-1.19.53-1.19 1.19v.62c.01.66.54 1.19 1.2 1.19Z"
               fill="url(#a)"
@@ -183,7 +186,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="26.506"
                 x2="8.235"
                 y2="26.506"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#361752" />
                 <stop offset="1" stopColor="#2D1E3B" />
               </linearGradient>
@@ -193,7 +197,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="26.506"
                 x2="26.235"
                 y2="26.506"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#361752" />
                 <stop offset="1" stopColor="#2D1E3B" />
               </linearGradient>
@@ -203,7 +208,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="24.813"
                 x2="15.365"
                 y2="18.875"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#E53A94" />
                 <stop offset="1" stopColor="#F53759" />
               </linearGradient>
@@ -213,7 +219,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="17.737"
                 x2="15.99"
                 y2="19.631"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#CB545A" />
                 <stop offset="1" stopColor="#CB545A" stopOpacity="0" />
               </linearGradient>
@@ -223,7 +230,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="25.49"
                 x2="27.7"
                 y2="25.49"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#9076A8" />
                 <stop offset="1" stopColor="#A99EB7" />
               </linearGradient>
@@ -233,7 +241,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="26"
                 x2="15.99"
                 y2="25.25"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#7B539E" />
                 <stop offset="1" stopColor="#7B539E" stopOpacity="0" />
               </linearGradient>
@@ -243,7 +252,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="22.891"
                 x2="26.38"
                 y2="21.637"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#D13459" stopOpacity="0" />
                 <stop offset="1" stopColor="#D13459" />
               </linearGradient>
@@ -253,7 +263,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="20.375"
                 x2="26.49"
                 y2="23"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#EFCD4B" />
                 <stop offset="1" stopColor="#FFF371" />
               </linearGradient>
@@ -263,7 +274,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="22.891"
                 x2="7.558"
                 y2="21.627"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#FD4070" stopOpacity="0" />
                 <stop offset="1" stopColor="#FD4070" />
               </linearGradient>
@@ -273,7 +285,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="20"
                 x2="7.052"
                 y2="22.813"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#FDD86D" />
                 <stop offset="1" stopColor="#FFE666" />
               </linearGradient>
@@ -283,7 +296,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="22.313"
                 x2="7.24"
                 y2="22.313"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#FFE96A" />
                 <stop offset="1" stopColor="#FFE96A" stopOpacity="0" />
               </linearGradient>
@@ -293,7 +307,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="20.141"
                 x2="18.49"
                 y2="23"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#F83A70" />
                 <stop offset="1" stopColor="#C51F66" />
               </linearGradient>
@@ -303,7 +318,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="21.5"
                 x2="18.99"
                 y2="21.5"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#362A59" />
                 <stop offset="1" stopColor="#381F4E" />
               </linearGradient>
@@ -313,7 +329,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="21.844"
                 x2="14.365"
                 y2="21.844"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#3D3861" />
                 <stop offset="1" stopColor="#3A355F" stopOpacity="0" />
               </linearGradient>
@@ -323,7 +340,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="25"
                 x2="15.998"
                 y2="27.01"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#998CAD" />
                 <stop offset="1" stopColor="#9988B1" />
               </linearGradient>
@@ -333,7 +351,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="27.297"
                 x2="15.995"
                 y2="26.797"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#8F77AE" />
                 <stop offset="1" stopColor="#8F77AE" stopOpacity="0" />
               </linearGradient>
@@ -343,7 +362,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="22.891"
                 x2="10.594"
                 y2="20.444"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#F84C91" />
                 <stop offset="1" stopColor="#C21D62" />
               </linearGradient>
@@ -353,7 +373,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="22.891"
                 x2="21.594"
                 y2="20.444"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#F84C91" />
                 <stop offset="1" stopColor="#C21D62" />
               </linearGradient>
@@ -363,7 +384,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="12.051"
                 x2="14.835"
                 y2="17.313"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#289BFD" />
                 <stop offset="1" stopColor="#50E2FF" />
               </linearGradient>
@@ -373,7 +395,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="11.875"
                 x2="15.96"
                 y2="13.563"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset=".259" stopColor="#1285EB" />
                 <stop offset="1" stopColor="#1285EB" stopOpacity="0" />
               </linearGradient>
@@ -383,7 +406,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="15.531"
                 x2="24.155"
                 y2="15.594"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset=".313" stopColor="#76EAFF" />
                 <stop offset="1" stopColor="#76EAFF" stopOpacity="0" />
               </linearGradient>
@@ -393,7 +417,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="11"
                 x2="22.666"
                 y2="11.002"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#FA3344" />
                 <stop offset="1" stopColor="#F83444" />
               </linearGradient>
@@ -403,7 +428,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 y1="12.188"
                 x2="20.865"
                 y2="11.594"
-                gradientUnits="userSpaceOnUse">
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#FF4E5B" />
                 <stop offset="1" stopColor="#FF4E5B" stopOpacity="0" />
               </linearGradient>
@@ -414,7 +440,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="4"
                 height="5"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -444,7 +471,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="4"
                 height="5"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -474,7 +502,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="3.212"
                 height="3.4"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -493,7 +522,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="3.228"
                 height="3.4"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -512,7 +542,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="6.4"
                 height="3.4"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -531,7 +562,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="6.5"
                 height="3.1"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -561,7 +593,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="4.01"
                 height="2.11"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -591,7 +624,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="3.4"
                 height="3.4"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -610,7 +644,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="3.4"
                 height="3.4"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -629,7 +664,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 width="13.659"
                 height="2"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB">
+                colorInterpolationFilters="sRGB"
+              >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   in="SourceGraphic"
@@ -658,7 +694,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="matrix(-.8358 1.26362 -1.19203 -.78845 10.239 16.327)">
+                gradientTransform="matrix(-.8358 1.26362 -1.19203 -.78845 10.239 16.327)"
+              >
                 <stop stopColor="#3E355C" />
                 <stop offset="1" stopColor="#36284C" />
               </radialGradient>
@@ -668,7 +705,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="rotate(123.319 8.477 15.11) scale(1.51217 1.42301)">
+                gradientTransform="rotate(123.319 8.477 15.11) scale(1.51217 1.42301)"
+              >
                 <stop stopColor="#3E355C" />
                 <stop offset="1" stopColor="#36284C" />
               </radialGradient>
@@ -678,7 +716,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="rotate(123.802 .162 16.758) scale(1.1094 .60232)">
+                gradientTransform="rotate(123.802 .162 16.758) scale(1.1094 .60232)"
+              >
                 <stop offset=".31" stopColor="#694A84" />
                 <stop offset="1" stopColor="#694A84" stopOpacity="0" />
               </radialGradient>
@@ -688,7 +727,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="matrix(1.76563 -1.90625 1.93154 1.78906 9.63 22.422)">
+                gradientTransform="matrix(1.76563 -1.90625 1.93154 1.78906 9.63 22.422)"
+              >
                 <stop stopColor="#fff" />
                 <stop offset="1" stopColor="#E7C9F4" />
               </radialGradient>
@@ -698,7 +738,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="matrix(1.76563 -1.90625 1.93154 1.78906 20.63 22.422)">
+                gradientTransform="matrix(1.76563 -1.90625 1.93154 1.78906 20.63 22.422)"
+              >
                 <stop stopColor="#fff" />
                 <stop offset="1" stopColor="#E7C9F4" />
               </radialGradient>
@@ -708,7 +749,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
                 cy="0"
                 r="1"
                 gradientUnits="userSpaceOnUse"
-                gradientTransform="rotate(131.448 9.191 11.121) scale(3.21025 1.15153)">
+                gradientTransform="rotate(131.448 9.191 11.121) scale(3.21025 1.15153)"
+              >
                 <stop offset=".373" stopColor="#23AAF5" />
                 <stop offset="1" stopColor="#23AAF5" stopOpacity="0" />
               </radialGradient>
@@ -724,7 +766,8 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
           fill="#eeeeee90"
           width="24"
           height="24"
-          viewBox="0 0 48 48">
+          viewBox="0 0 48 48"
+        >
           <path d="M 39.486328 6.9785156 A 1.50015 1.50015 0 0 0 38.439453 7.4394531 L 24 21.878906 L 9.5605469 7.4394531 A 1.50015 1.50015 0 0 0 8.484375 6.984375 A 1.50015 1.50015 0 0 0 7.4394531 9.5605469 L 21.878906 24 L 7.4394531 38.439453 A 1.50015 1.50015 0 1 0 9.5605469 40.560547 L 24 26.121094 L 38.439453 40.560547 A 1.50015 1.50015 0 1 0 40.560547 38.439453 L 26.121094 24 L 40.560547 9.5605469 A 1.50015 1.50015 0 0 0 39.486328 6.9785156 z"></path>
         </svg>
       </div>
@@ -736,36 +779,55 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
           <div className=" flex flex-col">
             <h3
               id="name"
-              className="font-semibold text-[#fefefe] tracking-wide truncate max-w-[98%]">
-              {name}
+              className="font-semibold text-[#fefefe] tracking-wide truncate max-w-[98%]"
+            >
+              Renan Lara Melo
             </h3>
             <h4
               id="email"
-              className="text-[#8e8e8e] font-medium pl-px text-[3vw] truncate max-w-[90%]">
-              {email}
+              className="text-[#8e8e8e] font-medium pl-px text-[3vw] truncate max-w-[90%]"
+            >
+              renanlarameleo@gmail.com
             </h4>
           </div>
         </div>
-        <svg
-          fill="none"
-          height="25"
-          width="25"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10 6C8.89543 6 8 5.10457 8 4C8 2.89543 8.89543 2 10 2C11.1046 2 12 2.89543 12 4C12 5.10457 11.1046 6 10 6Z"
-            fill="#d1d1d1"
-          />
-          <path
-            d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12Z"
-            fill="#d1d1d1"
-          />
-          <path
-            d="M10 18C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14C11.1046 14 12 14.8954 12 16C12 17.1046 11.1046 18 10 18Z"
-            fill="#d1d1d1"
-          />
-        </svg>
+        <div className="p-2 relative">
+          <div className="flex flex-col justify-evenly items-start gap-y-1 absolute bg-[#1f1f1f] top-0 -translate-y-full p-1 rounded-xl truncate border border-[#303030]">
+            <p
+              onClick={profileSettings}
+              className="font-medium border-b border-[#303030] pb-[6px] pt-[7px] pl-3 pr-10 hover:bg-[#2f2f2f] rounded-lg"
+            >
+              View Profile
+            </p>
+            <p
+              onClick={signOut}
+              className="font-medium pb-[6px] pt-[7px] pl-3 pr-10 w-full hover:bg-[#2f2f2f] rounded-lg"
+            >
+              Sign Out
+            </p>
+          </div>
+          <svg
+            fill="none"
+            height="25"
+            width="25"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 6C8.89543 6 8 5.10457 8 4C8 2.89543 8.89543 2 10 2C11.1046 2 12 2.89543 12 4C12 5.10457 11.1046 6 10 6Z"
+              fill="#d1d1d1"
+            />
+            <path
+              d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12Z"
+              fill="#d1d1d1"
+            />
+            <path
+              d="M10 18C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14C11.1046 14 12 14.8954 12 16C12 17.1046 11.1046 18 10 18Z"
+              fill="#d1d1d1"
+            />
+          </svg>
+        </div>
       </div>
     </nav>
-  )
-}
+  );
+};

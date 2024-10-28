@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Profile = () => {
   return (
     <>
@@ -14,5 +12,5 @@ export const Profile = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};

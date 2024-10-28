@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Navbar = () => {
   return (
     <section className="fixed grid grid-cols-3 px-10 justify-evenly items-center pb-4 bottom-0 right-0 bg-[#1d1d1d] h-[10vh] w-full text-[3vw] text-[#7c7c7c] z-10">
@@ -9,7 +7,8 @@ export const Navbar = () => {
           width="28"
           viewBox="0 0 48 48"
           fill="#7c7c7c"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
           <path d="M0 0h48v48h-48z" fill="none" />
         </svg>
@@ -17,7 +16,8 @@ export const Navbar = () => {
       </a>
       <a
         href="/map"
-        className="flex flex-col justify-center items-center h-full">
+        className="flex flex-col justify-center items-center h-full"
+      >
         <svg
           enableBackground="new 0 0 64 64"
           className="translate-x-[2px]"
@@ -28,7 +28,8 @@ export const Navbar = () => {
           viewBox="0 0 64 64"
           xmlSpace="preserve"
           xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink">
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
           <g>
             <g>
               <path
@@ -50,7 +51,8 @@ export const Navbar = () => {
       </a>
       <a
         href="profile"
-        className="flex flex-col justify-center items-center h-full">
+        className="flex flex-col justify-center items-center h-full"
+      >
         <svg
           enableBackground="new 0 0 128 128"
           width="28px"
@@ -62,7 +64,8 @@ export const Navbar = () => {
           strokeWidth={25}
           xmlSpace="preserve"
           xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink">
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
           <path d="M61.894,66.056H16.185c-1.104,0-2-0.896-2-2s0.896-2,2-2h45.709c1.104,0,2,0.896,2,2S62.998,66.056,61.894,66.056z" />
           <path d="M111.907,66.056H87.655c-1.104,0-2-0.896-2-2s0.896-2,2-2h24.252c1.104,0,2,0.896,2,2S113.012,66.056,111.907,66.056z" />
           <path d="M48.503,96.609H16.185c-1.104,0-2-0.896-2-2s0.896-2,2-2h32.318c1.104,0,2,0.896,2,2S49.607,96.609,48.503,96.609z" />
@@ -76,5 +79,5 @@ export const Navbar = () => {
         <span>Configurações</span>
       </a>
     </section>
-  )
-}
+  );
+};

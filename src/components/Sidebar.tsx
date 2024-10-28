@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface props {
   open: boolean;
@@ -8,15 +8,18 @@ interface props {
 }
 
 export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const handleToggle = () => setOpen(!open);
 
   useEffect(() => {
-    const sidebar = document.getElementById("sidebar");
-    if (sidebar) {
-      const navSize = sidebar?.clientWidth;
-      setSize(navSize);
+    if (open) {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar) {
+        setSize(sidebar.clientWidth);
+      }
     }
-  }, [size, setSize]);
+  }, [open, setSize]);
 
   const profileSettings = () => {};
 
@@ -25,7 +28,7 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
   return (
     <nav
       id="sidebar"
-      className={`bg-[#0a0a0a] z-20 w-[75vw] h-[100vh] flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
+      className={`bg-[#0a0a0a] z-20 w-[75vw] h-[100vh] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
         open ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -767,6 +770,10 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
           width="24"
           height="24"
           viewBox="0 0 48 48"
+          tabIndex={0}
+          role="button"
+          aria-label="Toggle Sidebar"
+          onKeyPress={(e) => e.key === "Enter" && handleToggle()}
         >
           <path d="M 39.486328 6.9785156 A 1.50015 1.50015 0 0 0 38.439453 7.4394531 L 24 21.878906 L 9.5605469 7.4394531 A 1.50015 1.50015 0 0 0 8.484375 6.984375 A 1.50015 1.50015 0 0 0 7.4394531 9.5605469 L 21.878906 24 L 7.4394531 38.439453 A 1.50015 1.50015 0 1 0 9.5605469 40.560547 L 24 26.121094 L 38.439453 40.560547 A 1.50015 1.50015 0 1 0 40.560547 38.439453 L 26.121094 24 L 40.560547 9.5605469 A 1.50015 1.50015 0 0 0 39.486328 6.9785156 z"></path>
         </svg>
@@ -791,21 +798,32 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, size, setSize }) => {
             </h4>
           </div>
         </div>
-        <div className="p-2 relative">
-          <div className="flex flex-col justify-evenly items-start gap-y-1 absolute bg-[#1f1f1f] top-0 -translate-y-full p-1 rounded-xl truncate border border-[#303030]">
-            <p
-              onClick={profileSettings}
-              className="font-medium border-b border-[#303030] pb-[6px] pt-[7px] pl-3 pr-10 hover:bg-[#2f2f2f] rounded-lg"
-            >
-              View Profile
-            </p>
-            <p
-              onClick={signOut}
-              className="font-medium pb-[6px] pt-[7px] pl-3 pr-10 w-full hover:bg-[#2f2f2f] rounded-lg"
-            >
-              Sign Out
-            </p>
-          </div>
+        <div
+          className="p-2 relative"
+          onClick={() => setShowDropdown(!showDropdown)}
+          onKeyPress={(e) =>
+            e.key === "Enter" && setShowDropdown(!showDropdown)
+          }
+          tabIndex={0}
+          role="button"
+          aria-label="Toggle Profile Options"
+        >
+          {showDropdown && (
+            <div className="flex flex-col justify-evenly items-start gap-y-1 absolute bg-[#1f1f1f] top-0 -translate-y-full p-1 rounded-xl truncate border border-[#303030]">
+              <p
+                onClick={profileSettings}
+                className="font-medium border-b border-[#303030] pb-[6px] pt-[7px] pl-3 pr-10 hover:bg-[#2f2f2f] rounded-lg"
+              >
+                View Profile
+              </p>
+              <p
+                onClick={signOut}
+                className="font-medium pb-[6px] pt-[7px] pl-3 pr-10 w-full hover:bg-[#2f2f2f] rounded-lg"
+              >
+                Sign Out
+              </p>
+            </div>
+          )}
           <svg
             fill="none"
             height="25"

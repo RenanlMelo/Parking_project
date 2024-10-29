@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 interface props {
   open: boolean;
@@ -10,16 +10,19 @@ interface props {
 export const Header: React.FC<props> = ({ open, setOpen }) => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { slug } = useParams<{ slug?: string }>();
 
   useEffect(() => {
     const textContent = document.getElementById("title");
     const inputContent = document.getElementById("inputDiv");
-    if (textContent && inputContent) {
+    const headerSection = document.getElementById("headerSection");
+    if (textContent && inputContent && headerSection) {
       if (currentPath === "/") textContent.innerText = "Vagas";
       else if (currentPath === "/map") {
         textContent.innerText = "Mapa do Campus";
         inputContent.style.display = "none";
-      } else {
+      } else if (slug) headerSection.style.display = "none";
+      else {
         textContent.innerText = "";
         inputContent.style.display = "none";
       }
@@ -28,6 +31,7 @@ export const Header: React.FC<props> = ({ open, setOpen }) => {
 
   return (
     <section
+      id="headerSection"
       className={`bg-[var(--main)] min-w-[100vw] flex flex-col p-6 pb-4`}
     >
       <svg

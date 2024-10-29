@@ -7,14 +7,20 @@ import { Header } from "./Header";
 export const Layout: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState(0);
+  const [nbSize, setNbSize] = useState(0);
 
   return (
     <>
-      <div className="flex relative">
-        <Sidebar open={open} setOpen={setOpen} setSize={setSize} />
+      <div className="flex relative w-full">
+        <Sidebar
+          nbSize={nbSize}
+          open={open}
+          setOpen={setOpen}
+          setSize={setSize}
+        />
 
         <div
-          className="transition-transform duration-300"
+          className="transition-transform duration-300 w-full"
           style={{
             transform: open
               ? `translateX(calc(${size}px - 1px))`
@@ -25,7 +31,7 @@ export const Layout: React.FC = () => {
           <Outlet />
         </div>
       </div>
-      <Navbar />
+      <Navbar setNbSize={setNbSize} />
     </>
   );
 };

@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 interface props {
+  nbSize: number;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSize: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Sidebar: React.FC<props> = ({ open, setOpen, setSize }) => {
+export const Sidebar: React.FC<props> = ({
+  nbSize,
+  open,
+  setOpen,
+  setSize,
+}) => {
   const [showDropdown, setShowDropdown] = useState(false);
+
+  console.log(nbSize);
 
   const handleToggle = () => setOpen(!open);
 
@@ -778,7 +786,10 @@ export const Sidebar: React.FC<props> = ({ open, setOpen, setSize }) => {
         </svg>
       </div>
 
-      <div className="flex justify-between items-center pb-28 px-6 w-full">
+      <div
+        className="flex justify-between items-center px-6 w-full"
+        style={{ paddingBottom: `calc(${nbSize}px + 2vh)` }}
+      >
         {/* <img src="" alt="" /> */}
         <div className="flex items-center gap-x-3">
           <div className="bg-white/50 rounded-full w-8 h-8 pr-2" />

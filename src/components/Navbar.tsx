@@ -1,6 +1,23 @@
-export const Navbar = () => {
+interface props {
+  setNbSize: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const Navbar: React.FC<props> = ({ setNbSize }) => {
+  const handleSize = () => {
+    const section = document.getElementById("nbsection");
+    if (section) {
+      const size = section.clientHeight;
+      setNbSize(size);
+    }
+  };
+
+  handleSize();
+
   return (
-    <section className="fixed grid grid-cols-3 px-10 justify-evenly items-center pb-4 bottom-0 right-0 bg-[#1d1d1d] h-[10vh] w-[100vw] text-[3vw] text-[#7c7c7c] z-50">
+    <section
+      id="nbsection"
+      className="fixed grid grid-cols-3 px-10 justify-evenly items-center bottom-0 right-0 bg-[#1d1d1d] h-[10vh] w-[100vw] text-[3vw] text-[#7c7c7c] z-50"
+    >
       <a href="/" className="flex flex-col justify-center items-center h-full">
         <svg
           height="28"

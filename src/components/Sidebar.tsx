@@ -34,8 +34,9 @@ export const Sidebar: React.FC<props> = ({
 
   return (
     <nav
+      style={{ height: `calc(100vh - ${nbSize}px)` }}
       id="sidebar"
-      className={`bg-[#0a0a0a] z-20 w-[75vw] h-[100vh] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
+      className={`bg-[#0a0a0a] z-20 w-[75vw] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
         open ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -786,10 +787,7 @@ export const Sidebar: React.FC<props> = ({
         </svg>
       </div>
 
-      <div
-        className="flex justify-between items-center px-6 w-full"
-        style={{ paddingBottom: `calc(${nbSize}px + 2vh)` }}
-      >
+      <div className="flex justify-between items-center p-6 w-full">
         {/* <img src="" alt="" /> */}
         <div className="flex items-center gap-x-3">
           <div className="bg-white/50 rounded-full w-8 h-8 pr-2" />

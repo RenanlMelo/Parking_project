@@ -14,7 +14,23 @@ export const Slug = () => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <div className="bg-[#202020] rounded-full w-12 h-12 absolute top-0 left-0 m-4" />
+      <a
+        href="/"
+        className="bg-[#202020] rounded-full w-12 h-12 absolute top-0 left-0 m-4 flex justify-center items-center"
+      >
+        <svg
+          width="21"
+          height="30"
+          viewBox="0 0 112 160"
+          className="-rotate-90"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M48.5 152C48.5 156.142 51.8579 159.5 56 159.5C60.1421 159.5 63.5 156.142 63.5 152H48.5ZM61.3033 2.6967C58.3744 -0.232233 53.6256 -0.232233 50.6967 2.6967L2.96699 50.4264C0.0380592 53.3553 0.0380592 58.1041 2.96699 61.033C5.89592 63.9619 10.6447 63.9619 13.5736 61.033L56 18.6066L98.4264 61.033C101.355 63.9619 106.104 63.9619 109.033 61.033C111.962 58.1041 111.962 53.3553 109.033 50.4264L61.3033 2.6967ZM63.5 152L63.5 8H48.5L48.5 152H63.5Z"
+            fill="#aaa"
+          />
+        </svg>
+      </a>
       <img className="w-full" src={carSpace.img} alt={carSpace.name} />
       <h1 className="font-bold text-[6vw] text-start w-full pt-4 px-5">
         {carSpace.name}

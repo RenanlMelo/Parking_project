@@ -17,7 +17,11 @@ export const Sidebar: React.FC<props> = ({
 
   console.log(nbSize);
 
-  const handleToggle = () => setOpen(!open);
+  const handleToggle = () => {
+    setOpen(!open);
+    if (open) document.body.style.overflowY = "hidden";
+    else document.body.style.overflowY = "visible";
+  };
 
   useEffect(() => {
     if (open) {
@@ -34,11 +38,12 @@ export const Sidebar: React.FC<props> = ({
 
   return (
     <nav
-      style={{ height: `calc(100vh - ${nbSize}px)` }}
+      style={{
+        height: `calc(100vh - ${nbSize}px)`,
+        transform: open ? "translateX(0)" : "translateX(calc(-100% - 1px))",
+      }}
       id="sidebar"
-      className={`bg-[#0a0a0a] z-20 w-[75vw] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300 ${
-        open ? "translate-x-0" : "-translate-x-full"
-      }`}
+      className="bg-[#0a0a0a] z-20 w-[75vw] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300"
     >
       <div className="flex justify-between p-6 items-center">
         <div className="grid col-span-2 gap-x-2">

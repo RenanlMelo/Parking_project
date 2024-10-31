@@ -15,13 +15,22 @@ export const Sidebar: React.FC<props> = ({
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
-  console.log(nbSize);
-
   const handleToggle = () => {
     setOpen(!open);
-    if (open) document.body.style.overflowY = "hidden";
-    else document.body.style.overflowY = "visible";
+    console.log(open);
   };
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
 
   useEffect(() => {
     if (open) {
@@ -41,9 +50,10 @@ export const Sidebar: React.FC<props> = ({
       style={{
         height: `calc(100vh - ${nbSize}px)`,
         transform: open ? "translateX(0)" : "translateX(calc(-100% - 1px))",
+        position: open ? "fixed" : "absolute",
       }}
       id="sidebar"
-      className="bg-[#0a0a0a] z-20 w-[75vw] fixed flex flex-col justify-between border-r border-white/10 transition-transform duration-300"
+      className="bg-[#0a0a0a] z-20 w-[75vw] flex flex-col justify-between border-r border-white/10 transition-transform duration-300"
     >
       <div className="flex justify-between p-6 items-center">
         <div className="grid col-span-2 gap-x-2">
@@ -786,7 +796,6 @@ export const Sidebar: React.FC<props> = ({
           tabIndex={0}
           role="button"
           aria-label="Toggle Sidebar"
-          onKeyPress={(e) => e.key === "Enter" && handleToggle()}
         >
           <path d="M 39.486328 6.9785156 A 1.50015 1.50015 0 0 0 38.439453 7.4394531 L 24 21.878906 L 9.5605469 7.4394531 A 1.50015 1.50015 0 0 0 8.484375 6.984375 A 1.50015 1.50015 0 0 0 7.4394531 9.5605469 L 21.878906 24 L 7.4394531 38.439453 A 1.50015 1.50015 0 1 0 9.5605469 40.560547 L 24 26.121094 L 38.439453 40.560547 A 1.50015 1.50015 0 1 0 40.560547 38.439453 L 26.121094 24 L 40.560547 9.5605469 A 1.50015 1.50015 0 0 0 39.486328 6.9785156 z"></path>
         </svg>
@@ -814,9 +823,6 @@ export const Sidebar: React.FC<props> = ({
         <div
           className="p-2 relative"
           onClick={() => setShowDropdown(!showDropdown)}
-          onKeyPress={(e) =>
-            e.key === "Enter" && setShowDropdown(!showDropdown)
-          }
           tabIndex={0}
           role="button"
           aria-label="Toggle Profile Options"

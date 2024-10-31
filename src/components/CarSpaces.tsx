@@ -1,8 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { carSpaceList } from "./CarSpacesList";
+import { useNavigate, useOutletContext } from "react-router-dom";
+
+interface CarSpace {
+  name: string;
+  slug: string;
+  img: string;
+  vagas: string;
+}
 
 export const CarSpaces = () => {
   const navigate = useNavigate();
+  const { filteredItems } = useOutletContext<{ filteredItems: CarSpace[] }>();
 
   const handleClick = (slug: string) => {
     if (slug) navigate(`/${slug}`);
@@ -10,7 +17,7 @@ export const CarSpaces = () => {
 
   return (
     <section className="grid grid-cols-2 mt-4 mb-24 px-4 gap-x-3 gap-y-6">
-      {carSpaceList.map((item, index) => (
+      {filteredItems.map((item, index) => (
         <div
           key={index}
           onClick={() => handleClick(item.slug)}

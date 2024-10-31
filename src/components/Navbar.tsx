@@ -1,17 +1,17 @@
+import { useEffect } from "react";
+
 interface props {
   setNbSize: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const Navbar: React.FC<props> = ({ setNbSize }) => {
-  const handleSize = () => {
+  useEffect(() => {
     const section = document.getElementById("nbsection");
     if (section) {
       const size = section.clientHeight;
       setNbSize(size);
     }
-  };
-
-  handleSize();
+  }, [setNbSize]);
 
   return (
     <section

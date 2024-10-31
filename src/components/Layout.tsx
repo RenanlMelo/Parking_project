@@ -3,11 +3,13 @@ import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
 import { Header } from "./Header";
+import { carSpaceList } from "./CarSpacesList";
 
 export const Layout: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState(0);
   const [nbSize, setNbSize] = useState(0);
+  const [filteredItems, setFilteredItems] = useState(carSpaceList);
 
   return (
     <>
@@ -27,8 +29,12 @@ export const Layout: React.FC = () => {
               : `translateX(0)`,
           }}
         >
-          <Header open={open} setOpen={setOpen} size={size} />
-          <Outlet />
+          <Header
+            open={open}
+            setOpen={setOpen}
+            setFilteredItems={setFilteredItems}
+          />
+          <Outlet context={{ filteredItems }} />
         </div>
       </div>
       <Navbar setNbSize={setNbSize} />

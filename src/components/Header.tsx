@@ -1,21 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { carSpaceList } from "./CarSpacesList";
 
 interface props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  size: number;
+  setFilteredItems: React.Dispatch<React.SetStateAction<typeof carSpaceList>>;
 }
 
-export const Header: React.FC<props> = ({ open, setOpen }) => {
+export const Header: React.FC<props> = ({
+  open,
+  setOpen,
+  setFilteredItems,
+}) => {
   const location = useLocation();
   const currentPath = location.pathname;
   const { slug } = useParams<{ slug?: string }>();
+
+  const [searchItem, setSearchItem] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm);
+
+    const filteredCarPlaces = carSpaceList.filter((carPlace) =>
+      carPlace.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredItems(filteredCarPlaces);
+  };
 
   useEffect(() => {
     const textContent = document.getElementById("title");
     const inputContent = document.getElementById("inputDiv");
     const headerSection = document.getElementById("headerSection");
+
     if (textContent && inputContent && headerSection) {
       if (currentPath === "/") textContent.innerText = "Vagas";
       else if (currentPath === "/map") {
@@ -27,7 +46,7 @@ export const Header: React.FC<props> = ({ open, setOpen }) => {
         inputContent.style.display = "none";
       }
     }
-  }, [currentPath]);
+  }, [currentPath, slug]);
 
   return (
     <section
@@ -60,16 +79,13 @@ export const Header: React.FC<props> = ({ open, setOpen }) => {
         >
           <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"></path>
         </svg>
-        <label
-          htmlFor="search"
-          className="absolute text-[#9499f6] font-medium top-1/2 -translate-y-1/2 translate-x-9"
-        >
-          Search
-        </label>
         <input
+          onChange={handleInputChange}
+          value={searchItem}
+          placeholder="Search"
           id="search"
           type="text"
-          className="w-full h-7 bg-[#3d46ee] rounded-lg border-none py-4 focus:outline-1 focus:outline-white/20"
+          className="w-full h-7 bg-[#3d46ee] rounded-lg border-none px-9 py-4 focus:outline-1 focus:outline-white/20 placeholder:text-[#9499f6] placeholder:font-medium"
         />
       </div>
     </section>

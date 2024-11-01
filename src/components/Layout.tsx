@@ -13,7 +13,7 @@ export const Layout: React.FC = () => {
 
   return (
     <>
-      <div className="flex relative w-full">
+      <div className="flex relative w-full h-[100vh]">
         <Sidebar
           nbSize={nbSize}
           open={open}
@@ -34,7 +34,7 @@ export const Layout: React.FC = () => {
             setOpen={setOpen}
             setFilteredItems={setFilteredItems}
           />
-          <Outlet context={{ filteredItems }} />
+          <Outlet context={{ filteredItems, nbSize }} />
         </div>
       </div>
       <Navbar setNbSize={setNbSize} />

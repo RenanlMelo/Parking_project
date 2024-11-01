@@ -17,7 +17,9 @@ export const Sidebar: React.FC<props> = ({
 
   const handleToggle = () => {
     setOpen(!open);
-    console.log(open);
+    if (showDropdown == true) {
+      setShowDropdown(false);
+    }
   };
 
   useEffect(() => {

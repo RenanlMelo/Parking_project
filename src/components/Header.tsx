@@ -73,7 +73,7 @@ export const Header: React.FC<props> = ({
           y="0px"
           width="22"
           height="22"
-          fill="#9499f6"
+          fill="#aaa"
           viewBox="0 0 30 30"
           className="absolute top-1/2 -translate-y-1/2 translate-x-1/3"
         >
@@ -85,7 +85,7 @@ export const Header: React.FC<props> = ({
           placeholder="Search"
           id="search"
           type="text"
-          className="w-full h-7 bg-[#3d46ee] rounded-lg border-none px-9 py-4 focus:outline-1 focus:outline-white/20 placeholder:text-[#9499f6] placeholder:font-medium"
+          className="w-full h-7 bg-[#225481] rounded-lg border-none px-9 py-4 focus:outline-1 focus:outline-white/20 placeholder:text-[#ccc] placeholder:font-medium"
         />
       </div>
     </section>

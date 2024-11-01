@@ -3,51 +3,66 @@ import { useOutletContext } from "react-router-dom";
 
 export const Profile = () => {
   const [name, setName] = useState("Renan Lara Melo");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const nbSize = useOutletContext<{ nbsize: number }>();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<string>("");
 
+  // Estados temporários para nome e imagem
+  const [tempName, setTempName] = useState(name);
+  const [tempImage, setTempImage] = useState<string>(image);
+
   const handleEditProfile = () => {
     setOpen(!open);
+    setTempName(name); // Sincroniza o nome temporário com o nome atual ao abrir o modal
+    setTempImage(image); // Sincroniza a imagem temporária com a imagem atual ao abrir o modal
   };
 
   const handleImageChange = () => {
     if (inputRef.current) {
-      inputRef.current.click(); // Open the file dialog
+      inputRef.current.click(); // Abre o diálogo de seleção de arquivo
     }
   };
 
   const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-
     if (files && files.length > 0) {
       const file = files[0];
       console.log(file);
-      setImage(URL.createObjectURL(file));
+      setTempImage(URL.createObjectURL(file)); // Armazena a imagem temporária
     } else {
-      console.log("No file selected");
-      setImage("");
+      console.log("Nenhum arquivo selecionado");
+      setTempImage(""); // Reseta a imagem temporária se não houver arquivo
     }
   };
 
-  // Clean up object URL on component unmount
+  // Limpeza do URL da imagem temporária ao desmontar o componente
   useEffect(() => {
     return () => {
-      if (image) {
-        URL.revokeObjectURL(image);
+      if (tempImage) {
+        URL.revokeObjectURL(tempImage);
       }
     };
-  }, [image]);
+  }, [tempImage]);
+
+  const handleSave = () => {
+    setName(tempName); // Salva o nome temporário como o nome principal
+    setImage(tempImage); // Salva a imagem temporária como a imagem principal
+    setOpen(false); // Fecha o modal de edição
+  };
 
   return (
     <>
       <section className="h-[70vh] w-[100vw] relative">
-        <img
-          src={image}
-          alt="Foto de perfil"
-          className="absolute bg-[#505050] w-28 aspect-square rounded-full right-1/2 translate-x-1/2 -translate-y-1/2 border-4 border-white/20"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            className="absolute bg-[#505050] w-28 aspect-square rounded-full right-1/2 translate-x-1/2 -translate-y-1/2 border-4 border-white/20"
+          />
+        ) : (
+          <div className="absolute bg-[#505050] w-28 aspect-square rounded-full right-1/2 translate-x-1/2 -translate-y-1/2 border-4 border-white/20" />
+        )}
         <div className="flex flex-col justify-center items-center pt-16">
           <h2 className="font-bold text-[#eee] text-[6vw]">{name}</h2>
           <h3 className="font-semibold text-[#666666] text-[4.5vw]">
@@ -85,8 +100,8 @@ export const Profile = () => {
               <h4 className="px-[4vw] font-semibold text-[5vw]">Nome</h4>
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.currentTarget.value)}
+                value={tempName}
+                onChange={(e) => setTempName(e.currentTarget.value)}
                 className="bg-[#202020] border border-white/30 py-2 rounded-full px-[4vw]"
                 aria-label="Name"
               />
@@ -111,6 +126,12 @@ export const Profile = () => {
                 Escolher foto de perfil
               </button>
             </div>
+            <button
+              onClick={handleSave}
+              className="text-blue-600 text-[4vw] border-2 border-blue-600/80 px-4 py-2 mx-[10vw] mt-[2vh] rounded-full"
+            >
+              Salvar
+            </button>
           </div>
         )}
       </section>

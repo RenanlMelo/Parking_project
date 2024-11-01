@@ -2,7 +2,11 @@ export const Map = () => {
   return (
     <>
       <section className="p-4">
-        <div className="w-[90vw] aspect-[1/1] bg-black/50 mx-auto rounded-2xl" />
+        {/* <div className="w-[90vw] aspect-[1/1] bg-black/50 mx-auto rounded-2xl" /> */}
+        <img
+          src="/campus.png"
+          className="w-[90vw] aspect-[2/1] bg-black/50 mx-auto rounded-2xl"
+        />
         <div className="flex flex-col justify-center items-center">
           <h2 className="mt-8 my-b-2 pl-1 font-semibold w-full text-start">
             Vagas ocupadas

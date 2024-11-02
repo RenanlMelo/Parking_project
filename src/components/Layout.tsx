@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 import { Header } from "./Header";
 import { carSpaceList } from "./CarSpacesList";
 
-export const Layout: React.FC = () => {
+export const Layout = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState(0);
   const [nbSize, setNbSize] = useState(0);

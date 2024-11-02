@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import App from "./App";
@@ -6,7 +5,7 @@ import { Profile } from "./pages/Profile";
 import { Map } from "./pages/Map";
 import { Slug } from "./pages/Slug";
 
-export const AppRoutes: React.FC = () => {
+export const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<Layout />}>

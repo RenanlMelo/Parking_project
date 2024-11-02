@@ -8,19 +8,18 @@ export const Profile = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<string>("");
 
-  // Estados temporários para nome e imagem
   const [tempName, setTempName] = useState(name);
   const [tempImage, setTempImage] = useState<string>(image);
 
   const handleEditProfile = () => {
     setOpen(!open);
-    setTempName(name); // Sincroniza o nome temporário com o nome atual ao abrir o modal
-    setTempImage(image); // Sincroniza a imagem temporária com a imagem atual ao abrir o modal
+    setTempName(name);
+    setTempImage(image);
   };
 
   const handleImageChange = () => {
     if (inputRef.current) {
-      inputRef.current.click(); // Abre o diálogo de seleção de arquivo
+      inputRef.current.click();
     }
   };
 
@@ -29,14 +28,13 @@ export const Profile = () => {
     if (files && files.length > 0) {
       const file = files[0];
       console.log(file);
-      setTempImage(URL.createObjectURL(file)); // Armazena a imagem temporária
+      setTempImage(URL.createObjectURL(file));
     } else {
       console.log("Nenhum arquivo selecionado");
-      setTempImage(""); // Reseta a imagem temporária se não houver arquivo
+      setTempImage("");
     }
   };
 
-  // Limpeza do URL da imagem temporária ao desmontar o componente
   useEffect(() => {
     return () => {
       if (tempImage) {
@@ -46,9 +44,9 @@ export const Profile = () => {
   }, [tempImage]);
 
   const handleSave = () => {
-    setName(tempName); // Salva o nome temporário como o nome principal
-    setImage(tempImage); // Salva a imagem temporária como a imagem principal
-    setOpen(false); // Fecha o modal de edição
+    setName(tempName);
+    setImage(tempImage);
+    setOpen(false);
   };
 
   return (

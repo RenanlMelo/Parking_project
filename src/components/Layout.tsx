@@ -39,7 +39,7 @@ export const Layout = () => {
             setOpen={setOpen}
             setFilteredItems={setFilteredItems}
           />
-          <Outlet context={{ filteredItems, nbSize }} />
+          <Outlet context={{ filteredItems, nbSize, image, setImage }} />
         </div>
       </div>
       <Navbar setNbSize={setNbSize} />

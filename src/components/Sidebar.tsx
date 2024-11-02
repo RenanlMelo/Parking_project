@@ -18,6 +18,8 @@ export const Sidebar: React.FC<props> = ({
   setSize,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [tempName, setTempName] = useState(name);
+  const [tempImage, setTempImage] = useState<string>(image);
 
   const handleToggle = () => {
     setOpen(!open);
@@ -808,9 +810,16 @@ export const Sidebar: React.FC<props> = ({
       </div>
 
       <div className="flex justify-between items-center p-6 w-full">
-        {/* <img src="" alt="" /> */}
-        <div className="flex items-center gap-x-3">
+        {tempImage ? (
+          <img
+            src={tempImage}
+            alt=""
+            className="bg-white/50 rounded-full w-8 h-8 pr-2"
+          />
+        ) : (
           <div className="bg-white/50 rounded-full w-8 h-8 pr-2" />
+        )}
+        <div className="flex items-center gap-x-3">
           <div className=" flex flex-col">
             <h3
               id="name"
@@ -835,12 +844,13 @@ export const Sidebar: React.FC<props> = ({
         >
           {showDropdown && (
             <div className="flex flex-col justify-evenly items-start gap-y-1 absolute bg-[#1f1f1f] top-0 -translate-y-full p-1 rounded-xl truncate border border-[#303030]">
-              <p
+              <a
+                href="/profile"
                 onClick={profileSettings}
                 className="font-medium border-b border-[#303030] pb-[6px] pt-[7px] pl-3 pr-10 hover:bg-[#2f2f2f] rounded-lg"
               >
                 View Profile
-              </p>
+              </a>
               <p
                 onClick={signOut}
                 className="font-medium pb-[6px] pt-[7px] pl-3 pr-10 w-full hover:bg-[#2f2f2f] rounded-lg"

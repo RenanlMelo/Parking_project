@@ -45,14 +45,14 @@ export const CarSpaces = () => {
               <h6 className="text-[#858585] font-semibold w-full">
                 {item.vagas}
               </h6>
-              <div className="bg-[#fff] h-1 rounded-full">
+              <div className="bg-[#ddd] h-1 rounded-full">
                 <div
                   style={{
                     width: `${
                       (parseInt(item.vagas) / parseInt(item.total)) * 100
                     }%`,
                   }}
-                  className="bg-[#0059a6] h-1 "
+                  className="bg-[#0059a6] h-1 rounded-full"
                 />
               </div>
             </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 interface props {
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
   nbSize: number;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,6 +10,8 @@ interface props {
 }
 
 export const Sidebar: React.FC<props> = ({
+  image,
+  setImage,
   nbSize,
   open,
   setOpen,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
@@ -10,11 +10,16 @@ export const Layout = () => {
   const [size, setSize] = useState(0);
   const [nbSize, setNbSize] = useState(0);
   const [filteredItems, setFilteredItems] = useState(carSpaceList);
+  const [image, setImage] = useState<string>(
+    () => localStorage.getItem("profileImage") || ""
+  );
 
   return (
     <>
       <div className="flex relative w-full h-[100vh]">
         <Sidebar
+          image={image}
+          setImage={setImage}
           nbSize={nbSize}
           open={open}
           setOpen={setOpen}

@@ -1,12 +1,16 @@
 import { useRef, useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 
-export const Profile = () => {
+interface props {
+  image: string;
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const Profile: React.FC<props> = ({ image, setImage }) => {
   const [name, setName] = useState("Renan Lara Melo");
   const [open, setOpen] = useState(false);
   const nbSize = useOutletContext<{ nbsize: number }>();
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [image, setImage] = useState<string>("");
 
   const [tempName, setTempName] = useState(name);
   const [tempImage, setTempImage] = useState<string>(image);
@@ -27,34 +31,38 @@ export const Profile = () => {
     const files = e.target.files;
     if (files && files.length > 0) {
       const file = files[0];
-      console.log(file);
       setTempImage(URL.createObjectURL(file));
     } else {
-      console.log("Nenhum arquivo selecionado");
       setTempImage("");
     }
   };
 
   useEffect(() => {
+    const storedImage = localStorage.getItem("profileImage");
+    if (storedImage) {
+      setTempImage(storedImage);
+      setImage(storedImage);
+    }
     return () => {
       if (tempImage) {
         URL.revokeObjectURL(tempImage);
       }
     };
-  }, [tempImage]);
+  }, []);
 
   const handleSave = () => {
     setName(tempName);
     setImage(tempImage);
+    localStorage.setItem("profileImage", tempImage); // Save to localStorage
     setOpen(false);
   };
 
   return (
     <>
       <section className="h-[70vh] w-[100vw] relative">
-        {image ? (
+        {tempImage ? (
           <img
-            src={image}
+            src={tempImage}
             alt=""
             className="absolute bg-[#505050] w-28 aspect-square rounded-full right-1/2 translate-x-1/2 -translate-y-1/2 border-4 border-white/20"
           />

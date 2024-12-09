@@ -17,17 +17,9 @@ export const CarSpaces = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 mt-4 px-4 gap-x-3 gap-y-6">
+    <div className="grid grid-cols-2 grid-rows-3 mt-4 px-4 gap-x-3 gap-y-6 pb-32">
       {filteredItems.map((item, index) => (
-        <div
-          key={index}
-          className={`${
-            index === filteredItems.length - 1 ||
-            index === filteredItems.length - 2
-              ? "mb-24"
-              : ""
-          }`}
-        >
+        <div key={index}>
           <div
             key={index}
             onClick={() => handleClick(item.slug)}
@@ -43,7 +35,7 @@ export const CarSpaces = () => {
                 {item.name}
               </h5>
               <h6 className="text-[#858585] font-semibold w-full">
-                {item.vagas}
+                {item.vagas} / {item.total}
               </h6>
               <div className="bg-[#ddd] h-1 rounded-full">
                 <div

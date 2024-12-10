@@ -17,7 +17,7 @@ export const CarSpaces = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 grid-rows-3 mt-4 px-4 gap-x-3 gap-y-6 pb-32">
+    <div className="grid grid-cols-2 grid-rows-3 mt-4 px-4 gap-x-3 gap-y-6 pb-64">
       {filteredItems.map((item, index) => (
         <div key={index}>
           <div

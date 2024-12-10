@@ -809,7 +809,7 @@ export const Sidebar: React.FC<props> = ({
         </svg>
       </div>
 
-      <div className="flex justify-between items-center p-6 w-full">
+      <div className="flex justify-between items-center p-6 w-full mb-14">
         {tempImage ? (
           <img
             src={tempImage}

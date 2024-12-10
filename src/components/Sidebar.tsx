@@ -23,20 +23,24 @@ export const Sidebar: React.FC<props> = ({
 
   const handleToggle = () => {
     setOpen(!open);
-    if (showDropdown == true) {
+    if (showDropdown) {
       setShowDropdown(false);
     }
   };
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"; // Trava o scroll
+      document.body.style.touchAction = "none"; // Previne gestos no mobile
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // Libera o scroll
+      document.body.style.touchAction = "auto";
     }
 
     return () => {
+      // Garante que o estilo seja restaurado ao desmontar o componente
       document.body.style.overflow = "auto";
+      document.body.style.touchAction = "auto";
     };
   }, [open]);
 

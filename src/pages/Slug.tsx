@@ -46,7 +46,7 @@ export const Slug = () => {
         Número total de vagas: {carSpace.total}
       </p>
       <p className="font-semibold text-[#898989] text-[4.5vw] text-start w-full px-5 mt-[4vh]">
-        Porcentagem de vagas ocupadas:
+        Porcentagem de vagas ocupadas: {(carSpace.vagas / carSpace.total) * 100}%
       </p>
       <div className="mt-4 bg-[#ddd] h-2 rounded-full w-[90vw]">
         <div

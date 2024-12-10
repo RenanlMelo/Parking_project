@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { carSpaceList } from "../components/CarSpacesList";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export const Slug = () => {
   const { slug } = useParams();
@@ -14,6 +16,9 @@ export const Slug = () => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
+      <Zoom>
+        <img className="w-[100vw]" src={carSpace.img} alt={carSpace.name} />
+      </Zoom>
       <a
         href="/"
         className="bg-[#202020] rounded-full w-12 h-12 absolute top-0 left-0 m-4 flex justify-center items-center"
@@ -31,13 +36,26 @@ export const Slug = () => {
           />
         </svg>
       </a>
-      <img className="w-full" src={carSpace.img} alt={carSpace.name} />
       <h1 className="font-bold text-[6vw] text-start w-full pt-4 px-5">
         {carSpace.name}
       </h1>
       <p className="font-semibold text-[#898989] text-[4.5vw] text-start w-full px-5">
         Vagas disponíveis: {carSpace.vagas}
       </p>
+      <p className="font-semibold text-[#898989] text-[4.5vw] text-start w-full px-5">
+        Número total de vagas: {carSpace.total}
+      </p>
+      <p className="font-semibold text-[#898989] text-[4.5vw] text-start w-full px-5 mt-[4vh]">
+        Porcentagem de vagas ocupadas:
+      </p>
+      <div className="mt-4 bg-[#ddd] h-2 rounded-full w-[90vw]">
+        <div
+          style={{
+            width: `${(carSpace.vagas / carSpace.total) * 100}%`,
+          }}
+          className="bg-[#0059a6] h-full"
+        />
+      </div>
     </div>
   );
 };
